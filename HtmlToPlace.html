@@ -1,0 +1,1944 @@
+<script>
+        jQuery(".plan-comparison").each(function() {
+            var a = jQuery(this),
+                b = a.find(".plan-comparison__row-highlight");
+            a.find(".plan-comparison__feature:not(:first-child), .plan-comparison__feature-value").on("mouseenter touchstart", function() {
+                var a = jQuery(this).index();
+                b.css("transform", "translateY(calc(" + a + "00% + " + a + "px))")
+            })
+        });
+        jQuery(function() {
+            function a() {
+                jQuery(".plan-comparison__plans").removeClass("plan-comparison__plans--peek");
+                requestAnimationFrame(function() {
+                    return jQuery(".plan-comparison__plans").addClass("plan-comparison__plans--peek")
+                })
+            }
+    
+            function b() {
+                scrollY > jQuery(".plan-comparison").offset().top - innerHeight / 2 && jQuery(".plan-comparison__plans").width() > jQuery(".plan-comparison__plans-wrapper").width() + 60 && (a(), jQuery(window).off("scroll", b))
+            }
+            jQuery(window).on("scroll", b)
+        });
+    
+    
+    
+    
+    
+    //<!--SCript for adding content to your feature table-->
+    //<!-- yes="availabe";    no = "not available"  for custom "just write down text" -->
+    
+        jQuery(document).ready(function() {
+    
+            arrData = [
+                //first array for features and link
+                // futures and second for link
+                [
+                    ["100 pin codes ", "https://kas.com.au"],
+                    ["100 RFID cards", "https://kas.com.au"],
+                    ["Free passage mode ", "https://kas.com.au"],
+                    ["Setup Assistance ", "https://kas.com.au"],
+                    ["Below features require Mobile App	", "https://kas.com.au"],
+                    ["Mobile Keys ", "https://kas.com.au"],
+                    ["Auto-Generated Pincodes ", "https://kas.com.au"],
+                    ["Manager User ", "https://kas.com.au"],
+                    ["Guest User ", "https://kas.com.au"],
+                    ["Access to Cloud Web Console ", "https://kas.com.au"],
+                    ["Below features require a Gateway ", "https://kas.com.au"],
+                    ["Live Unlocking Record As an App Push notification	", "https://kas.com.au"],
+                    ["Online pin code One Time/Lock", "https://kas.com.au"],
+                    ["Remote Unlock ", "https://kas.com.au"],
+                    ["User rights ", "https://kas.com.au"],
+                    ["Live unlocking record list (3 month persistance)", "https://kas.com.au"],
+                    ["Export unlocking list as excel", "google.com"],
+                    ["Auto Executive mode", "https://kas.com.au"],
+                    ["Control lock parameters ", "https://kas.com.au"],
+                    ["100 online Pincodes", "https://kas.com.au"],
+                    ["100 online RFID cards ", "https://kas.com.au"],
+                    ["International Mobile Number support ", "https://kas.com.au"],
+                    ["Open API Access (For example: IFTTT) ", "https://kas.com.au"],
+                    ["Custom Email Branding Templates", "https://kas.com.au"],
+                    ["Multiple Document Themes", "https://kas.com.au"]
+                ],
+                //second array lite with Manage stock across multiple locations
+                // availbility and second is tooltip and second for link
+                [
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["LOW", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["single", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"]
+                ],
+                //third array for small business
+                [
+                    ["yes", "Manage stock across multiple locations"],                       //availibility and second is ToolTip
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["LOW", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["single", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["basic", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"]
+                ],
+                //business
+                [
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["LOW", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["Unlimited", "Manage stock across multiple locations"],
+                    ["Unlimited", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["Advanced", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"]
+                ],
+                //premium
+                [
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["LOW", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["Unlimited", "Manage stock across multiple locations"],
+                    ["Unlimited", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["Advanced", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"]
+                ],
+                //kas pro
+                [
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["LOW", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["Unlimited", "Manage stock across multiple locations"],
+                    ["Unlimited", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["no", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["Advanced", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"],
+                    ["yes", "Manage stock across multiple locations"]
+                ]
+            ];
+    
+            
+            // for(var i=0; i<=arrData.length; i++){
+            //       alert(arrData[i][0][0]);
+    
+            //   }
+            var futures = document.querySelectorAll('.plan-comparison__header-link');
+           
+    Array.prototype.forEach.call(futures, function(elements, index) {
+       
+        elements.innerHTML= " "+ arrData[0][index][0] + "<i class='fa fa-external-link plan-comparison__header-icon'></i>"
+    });
+    
+    
+    
+    Array.prototype.forEach.call(futures, function(elements, index) {
+      
+       // return " " + arrData[0][index][0] + " <i class='fa fa-external-link plan-comparison__header-icon'></i>"
+        elements.setAttribute("href", arrData[0][index][1]);
+    });
+    
+    
+    
+     
+    
+    
+            for (var d = 0; d < 5; d++) {
+                if(d == 0){
+                    var fut = document.querySelectorAll(".lite .plan-comparison__feature-value");
+                }
+                else if(d == 1){
+                    var fut = document.querySelectorAll(".smallbusiness .plan-comparison__feature-value");
+                }
+                else if(d == 2){
+                    var fut = document.querySelectorAll(".business .plan-comparison__feature-value");
+                }
+                else if(d==3){
+                    var fut = document.querySelectorAll(".premium .plan-comparison__feature-value");
+                }
+                else if(d==4){
+                    var fut = document.querySelectorAll(".pro .plan-comparison__feature-value");
+                }
+              
+    Array.prototype.forEach.call(fut, function(elements, index) {
+        var y = arrData[d + 1][index][1].trim();
+        var x = arrData[d + 1][index][0].trim();
+      
+        
+      // return " " + arrData[0][index][0] + " <i class='fa fa-external-link plan-comparison__header-icon'></i>"
+         if (x == "no") {
+                    elements.innerHTML= "<i class='fa fa-times plan-comparison__boolean--false'></i> <span class='plan-comparison__feature-tooltip'>" + y + "</span>";
+                } 
+                else if (x == "yes") {
+                    elements.innerHTML= "<i class='fa fa-check'></i> <span class='plan-comparison__feature-tooltip'>" + y + "</span>";
+    
+                }
+                 else {
+                    elements.innerHTML= "" + x + "<span class='plan-comparison__feature-tooltip'>" + y + "</span>";
+    
+                     }
+      // elements.innerHTML="<i class='fa fa-times plan-comparison__boolean--false'></i> <span class='plan-comparison__feature-tooltip'>" + y + "</span>";
+        
+    });
+    
+    
+    
+    }
+    
+    
+    
+        });
+    </script>
+
+<div class="current-page--pricing" style="">
+
+        <!--UPPER Table-->
+        <div class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="custom_widget">
+    
+            <ul class="pricing-overview">
+    
+                <li class="pricing-overview__price-plan price-plan price-plan--default">
+    
+                    <header class="price-plan__header">
+                        <h3 class="price-plan__title" style="color: #27AE60;">
+                                        Lite
+                                      </h3>
+    
+                    </header>
+    
+                    <div class="price-plan__pricing">
+                        <p class="price-plan__annual-pricing">
+    
+                            <span class="price-plan__annual-price">
+    
+                                            FREE
+                                          </span> per month,
+                            <br>
+    
+                        </p>
+                        <p class="price-plan__blurb">
+                            Only use the lock without the app features
+                        </p>
+                        <p></p>
+    
+                        <p class="price-plan__monthly-pricing">
+    
+                            <button class="start" style=" background-color:green;">Get Started</button>
+    
+                        </p>
+                    </div>
+    
+                    <ul class="price-plan__features">
+                        <li class="price-plan__feature">
+    
+                            Unlimited Number of Locks
+                        </li>
+                        <li class="price-plan__feature">
+    
+                            1 Admin
+                        </li>
+                        <li class="price-plan__feature">
+    
+                            1 Manager
+                        </li>
+                        <li class="price-plan__feature">
+    
+                            Mobile App
+                        </li>
+                        <li class="price-plan__feature">
+    
+                            Access to Web Cloud Console
+                        </li>
+    
+                    </ul>
+                </li>
+    
+                <li class="pricing-overview__price-plan price-plan price-plan--default">
+    
+                    <header class="price-plan__header">
+                        <h3 class="price-plan__title" style="color: #27AE60;">
+                                        Small Business
+                                      </h3>
+    
+                    </header>
+    
+                    <div class="price-plan__pricing">
+                        <p class="price-plan__annual-pricing">
+    
+                            <span class="price-plan__annual-price">
+    
+                                            FREE
+                                          </span> per month,
+                            <br>
+                        </p>
+                        <p class="price-plan__blurb">
+                            Our entry level for boutique hospitality premises
+                        </p>
+                        <p></p>
+    
+                        <p class="price-plan__monthly-pricing">
+    
+                            <button class="start" style=" background-color:#27ae60;">Get Started</button>
+    
+                        </p>
+    
+                    </div>
+    
+                    <ul class="price-plan__features">
+                        <li class="price-plan__feature">
+    
+                            Unlimited Number of Locks
+                        </li>
+                        <li class="price-plan__feature">
+    
+                            1 Admin
+                        </li>
+                        <li class="price-plan__feature">
+    
+                            1 Manager
+                        </li>
+                        <li class="price-plan__feature">
+    
+                            Mobile App
+                        </li>
+                        <li class="price-plan__feature">
+    
+                            Access to Web Cloud Console
+                        </li>
+    
+                    </ul>
+                </li>
+    
+                <li class="pricing-overview__price-plan price-plan price-plan--popular">
+    
+                    <div class="corner-ribbon-bounds
+                                            styled-text-content">
+                        <h6 class="corner-ribbon
+                                               corner-ribbon--tiny
+                                               corner-ribbon--ocean">
+                                          <span class="corner-ribbon__text">
+                                            Popular
+                                          </span>
+    
+                                        </h6>
+                    </div>
+    
+                    <header class="price-plan__header">
+                        <h3 class="price-plan__title" style=" color: #515E78;">
+                                        Business
+                                      </h3>
+    
+                    </header>
+    
+                    <div class="price-plan__pricing">
+                        <p class="price-plan__annual-pricing">
+    
+                            <span class="price-plan__annual-price">
+    
+                                            $7
+    
+                                          </span> per month,
+                            <br>
+    
+                        </p>
+    
+                        <p class="price-plan__blurb">
+                            A plan for growing hotels/motels
+                            <br>
+                        </p>
+                        <p></p>
+    
+                        <p class="price-plan__monthly-pricing">
+    
+                            <button class="start" style=" background-color:#515e78">Get Started</button>
+    
+                        </p>
+                    </div>
+    
+                    <ul class="price-plan__features">
+                        <li class="price-plan__feature">
+    
+                            Unlimited Number of Locks
+                        </li>
+                        <li class="price-plan__feature">
+    
+                            1 Admin
+                        </li>
+                        <li class="price-plan__feature">
+    
+                            1 Manager
+                        </li>
+                        <li class="price-plan__feature">
+    
+                            Mobile App
+                        </li>
+                        <li class="price-plan__feature">
+    
+                            Access to Web Cloud Console
+                        </li>
+    
+                    </ul>
+                </li>
+    
+                <li class="pricing-overview__price-plan price-plan price-plan--default">
+    
+                    <header class="price-plan__header">
+                        <h3 class="price-plan__title" style=" color: #515E78;">
+                                        Premium
+                                      </h3>
+    
+                    </header>
+    
+                    <div class="price-plan__pricing">
+                        <p class="price-plan__annual-pricing">
+    
+                            <span class="price-plan__annual-price">
+    
+                                            $10
+                                          </span> per month,
+                            <br>
+    
+                        </p>
+    
+                        <p class="price-plan__blurb">
+                            Full remote features and advanced level of access control
+                        </p>
+                        <p></p>
+    
+                        <p class="price-plan__monthly-pricing">
+    
+                            <button class="start" style="background-color:#515e78;">Get Started</button>
+    
+                        </p>
+                    </div>
+    
+                    <ul class="price-plan__features">
+                        <li class="price-plan__feature">
+    
+                            Unlimited Number of Locks
+                        </li>
+                        <li class="price-plan__feature">
+    
+                            1 Admin
+                        </li>
+                        <li class="price-plan__feature">
+    
+                            1 Manager
+                        </li>
+                        <li class="price-plan__feature">
+    
+                            Mobile App
+                        </li>
+                        <li class="price-plan__feature">
+    
+                            Access to Web Cloud Console
+                        </li>
+    
+                    </ul>
+                </li>
+    
+                <li class="pricing-overview__price-plan price-plan price-plan--default">
+    
+                    <header class="price-plan__header">
+                        <h3 class="price-plan__title" style=" color: #FB9B7A;">
+                                                Pro (Open API)
+                                          </h3>
+    
+                    </header>
+    
+                    <div class="price-plan__pricing">
+                        <p class="price-plan__annual-pricing">
+    
+                            <span class="price-plan__annual-price">
+    
+                                                    $45
+                                              </span> per month,
+                            <br>
+    
+                        </p>
+    
+                        <p class="price-plan__blurb">
+                            Open API for third party integrators and booking.
+                        </p>
+                        <p></p>
+    
+                        <p class="price-plan__monthly-pricing">
+    
+                            <button class="start" style=" background-color:#fb9b72;">Get Started</button>
+    
+                        </p>
+                    </div>
+    
+                    <ul class="price-plan__features">
+                        <li class="price-plan__feature">
+    
+                            Unlimited Number of Locks
+                        </li>
+                        <li class="price-plan__feature">
+    
+                            1 Admin
+                        </li>
+                        <li class="price-plan__feature">
+    
+                            1 Manager
+                        </li>
+                        <li class="price-plan__feature">
+    
+                            Mobile App
+                        </li>
+                        <li class="price-plan__feature">
+    
+                            Access to Web Cloud Console
+                        </li>
+    
+                    </ul>
+                </li>
+    
+            </ul>
+        </div>
+    
+        <!--close Upper Table-->
+    
+        <!--middle call button-->
+        <div class="body-container-wrapper">
+            <div class="body-container container-fluid">
+    
+                <div class="row-fluid-wrapper row-depth-1 row-number-1  background-color--wash-darker">
+                    <div class="row-fluid ">
+                        <div class="span12 widget-span widget-type-widget_container wrapper--center-focus styled-text-content wrapper--no-min" style="" data-widget-type="widget_container" data-x="0" data-w="12">
+                            <span class="" style="" data-hs-cos-general-type="widget_container" data-hs-cos-type="widget_container"><div class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+                        <div data-background-style="background-color--wash-darker"></div>
+                        </div>
+                        <div class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="custom_widget"><div class="module--spacer-md"></div></div>
+                        <div class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module"><span class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><h2 style="text-align: center;">Want to get started..? Want a demo.? <strong>try for Free</strong></h2>
+                        <h3 style="text-align: center; color: #255d80;"><strong>Call 07 5500 5580 or </strong></h3></span></div>
+                        <div class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="module">
+    
+                            <div class="signup-modal-wrapper">
+    
+                                <div class="signup-modal-cta-wrapper signup-modal-cta-wrapper--bumper">
+                                    <a href="">
+                                        <h6 class="" style="border-width:0px;margin-top:0px;font-size:20px;" alt="Get Started">
+                                                Get Started
+                                                </h6>
+                                    </a>
+                                </div>
+    
+                            </div>
+    
+                        </div>
+                        <div class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="custom_widget">
+                            <div class="module--spacer-md"></div>
+                        </div>
+                        </span>
+                    </div>
+                    <!--end widget-span -->
+                </div>
+                <!--end row-->
+            </div>
+            <!--end row-wrapper -->
+    
+            <div class="row-fluid-wrapper row-depth-1 row-number-2 ">
+                <div class="row-fluid ">
+                    <div class="span12 widget-span widget-type-widget_container wrapper--center-focus styled-text-content wrapper--no-min" style="" data-widget-type="widget_container" data-x="0" data-w="12">
+                        <span class="" style="" data-hs-cos-general-type="widget_container" data-hs-cos-type="widget_container"><div class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="custom_widget"><div class="module--spacer-md"></div></div>
+                        <div class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><h3><strong>Full plan comparison</strong></h3></div>
+                        <div class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="custom_widget">
+    
+                        <div class="plan-comparison">
+                          <ul class="plan-comparison__features">
+                            <li class="plan-comparison__feature"><em class="denotation">Features</em></li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                    <a class="plan-comparison__header-link" href="">
+    
+                                            100 pin codes
+    
+                                        <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                      </a>
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                  <a class="plan-comparison__header-link" href="">
+    
+                                        100 RFID cards
+    
+                                    <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                  </a>
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                  <a class="plan-comparison__header-link" href="">
+    
+                                        Free passage mode
+    
+                                    <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                  </a>
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                  <a class="plan-comparison__header-link" href="">
+    
+                                        Setup Assistance
+    
+                                    <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                  </a>
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                  <a class="plan-comparison__header-link" href="">
+    
+                                        Below features require Mobile App	
+    
+                                    <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                  </a>
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                  <a class="plan-comparison__header-link" href="">
+    
+                                        Mobile Keys
+    
+                                    <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                  </a>
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                  <a class="plan-comparison__header-link" href="">
+    
+                                        Auto-Generated Pincodes
+    
+                                    <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                  </a>
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                    <a class="plan-comparison__header-link" href="">
+    
+                                            Manager User
+    
+                                        <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                      </a>
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                  <a class="plan-comparison__header-link" href="">
+    
+                                        Guest User
+    
+                                    <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                  </a>
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                    <a class="plan-comparison__header-link" href="">
+    
+                                            Access to Cloud Web Console
+    
+                                        <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                      </a>
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                    <a class="plan-comparison__header-link" href="">
+    
+                                            Below features require a Gateway
+    
+                                        <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                      </a>	
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                    <a class="plan-comparison__header-link" href="">
+    
+                                            Live Unlocking Record As an App Push notification	
+    
+                                        <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                      </a>	
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                    <a class="plan-comparison__header-link" href="">
+    
+                                            Online pin code One Time/Lock	
+    
+                                        <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                      </a>	
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                  <a class="plan-comparison__header-link" href="">
+    
+                                        Remote Unlock
+    
+                                    <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                  </a>
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                  <a class="plan-comparison__header-link" href="">
+    
+                                        User rights
+    
+                                    <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                  </a>
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                    <a class="plan-comparison__header-link" href="">
+    
+                                            Live unlocking record list (3 month persistance)
+    
+                                        <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                      </a>	
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                  <a class="plan-comparison__header-link" href="">
+    
+                                        Export unlocking list as excel
+    
+                                    <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                  </a>
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                  <a class="plan-comparison__header-link" href="">
+    
+                                        Auto Executive mode
+    
+                                    <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                  </a>
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                  <a class="plan-comparison__header-link" href="">
+                                        Control lock parameters
+    
+                                    <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                  </a>
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                    <a class="plan-comparison__header-link" href="">
+                                            100 online Pincodes
+    
+                                        <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                      </a>
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                  <a class="plan-comparison__header-link" href="">
+    
+                                        100 online RFID cards
+    
+                                    <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                  </a>
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                  <a class="plan-comparison__header-link" href="">
+    
+                                        International Mobile Number support
+    
+                                    <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                  </a>
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                    <a class="plan-comparison__header-link" href="">
+    
+                                            Open API Access (For example: IFTTT)
+    
+                                        <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                      </a>
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                    <a class="plan-comparison__header-link" href="">
+                                            Custom Email Branding Templates
+    
+                                        <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                      </a>
+    
+                              </li>
+    
+                              <li class="plan-comparison__feature">
+    
+                                    <a class="plan-comparison__header-link" href="">
+                                            Multiple Document Themes
+    
+                                        <i class="fa fa-external-link plan-comparison__header-icon"></i>
+                                      </a>
+    
+                              </li>
+    
+                          </ul>
+    
+                          <div class="plan-comparison__plans-wrapper">
+                            <ul class="plan-comparison__plans">
+    
+                           <li class="plan-comparison__plan plan-comparison__plan--default lite">
+                                  <h6 class="plan-comparison__plan-title">Lite</h6>
+    
+                                    <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                                            <i class="fa fa-check"></i>
+    
+                                        <span class="plan-comparison__feature-tooltip">Additional users available at $50 per user per month.</span>
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                        <i class="fa fa-check"></i>
+    
+                        <span class="plan-comparison__feature-tooltip">Connect your Shopify, Shopify Plus, Amazon, WooCommerce or Magento store. Additional channels available at jQuery50 per channel per month</span>
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                        <i class="fa fa-check"></i>
+    
+                        <span class="plan-comparison__feature-tooltip">Additional 300 orders at $99 per month</span>
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                        LOW
+    
+                        <span class="plan-comparison__feature-tooltip">Easily integrate with Xero or QuickBooks Online</span>
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                        <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                        <span class="plan-comparison__feature-tooltip">Fast and secure credit card payments for wholesale invoices</span>
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value">
+    
+                        <i class="fa fa-check"></i>
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                        <i class="fa fa-check"></i>
+    
+                        <span class="plan-comparison__feature-tooltip">Create and edit orders on iPhone and iPad</span>
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value">
+    
+                        single
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                        <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                        <span class="plan-comparison__feature-tooltip">Manage stock in a single location</span>
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                        <i class="fa fa-check"></i>
+    
+                        <span class="plan-comparison__feature-tooltip">Get in touch with our awesome support team 24 hours a day, 7 days a week</span>
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value">
+    
+                        <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                        <i class="fa fa-times plan-comparison__boolean--false"></i>
+                        <span class="plan-comparison__feature-tooltip">Basic control of staff access to data and features</span>
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value">
+    
+                        <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                        <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                        <span class="plan-comparison__feature-tooltip">Automate repetitive and time-consuming workflows</span>
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value">
+    
+                        <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value">
+    
+                        <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value">
+    
+                        <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value">
+    
+                        <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value">
+    
+                        <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value">
+    
+                        <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value">
+    
+                        <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value">
+    
+                        <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value">
+    
+                        <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value">
+    
+                        <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                    </div>
+    
+                    <div class="plan-comparison__feature-value">
+    
+                        <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                    </div>
+    
+                    </li>
+    
+                    <li class="plan-comparison__plan plan-comparison__plan--default smallbusiness">
+                        <h6 class="plan-comparison__plan-title">Small Business</h6>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Additional users available at $50 per user per month.</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Connect your Shopify, Shopify Plus, Amazon, WooCommerce or Magento store. Additional channels available at jQuery50 per channel per month</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Additional 300 orders at $99 per month</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            LOW
+    
+                            <span class="plan-comparison__feature-tooltip">Easily integrate with Xero or QuickBooks Online</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Fast and secure credit card payments for wholesale invoices</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Sell wholesale online with a B2B store customizable to each customer</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Create and edit orders on iPhone and iPad</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+                            single
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Manage stock across multiple locations</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Get in touch with our awesome support team 24 hours a day, 7 days a week</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-check"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Basic control of staff access to data and features</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            basic
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Automate repetitive and time-consuming workflows</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Create bills of materials and production orders</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-check"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-check"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                        </div>
+    
+                    </li>
+    
+                    <li class="plan-comparison__plan plan-comparison__plan--popular business">
+                        <h6 class="plan-comparison__plan-title">Business</h6>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Additional users available at jQuery50 per user per month.</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Connect your Shopify, Shopify Plus, Amazon, WooCommerce or Magento store. Additional channels available at jQuery50 per channel per month</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Additional 300 orders at jQuery99 per month</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            LOW
+    
+                            <span class="plan-comparison__feature-tooltip">Easily integrate with Xero or QuickBooks Online</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Fast and secure credit card payments for wholesale invoices</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Sell wholesale online with a B2B store customizable to each customer</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Create and edit orders on iPhone and iPad</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            Unlimited
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            Unlimited
+    
+                            <span class="plan-comparison__feature-tooltip">Manage stock across multiple locations</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Get in touch with our awesome support team 24 hours a day, 7 days a week</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Fine-grained control of staff access to data and features</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-check"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Automate repetitive and time-consuming workflows</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            Advanced
+    
+                            <span class="plan-comparison__feature-tooltip">Create bills of materials and production orders</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-check"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-check"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Integrate with Fulfillment by Amazon.</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Add a Unique URL, Promotional Banners and Featured Products to your B2B store</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Bin locations, pick lists. Everything you need to manage your growing warehouse</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Our system helps you work out how many units you’re likely to sell, and when you should restock</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                        </div>
+    
+                    </li>
+    
+                    <li class="plan-comparison__plan plan-comparison__plan--default premium">
+                        <h6 class="plan-comparison__plan-title">Premium</h6>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Additional users available at jQuery50 per user per month.</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Connect your Shopify, Shopify Plus, Amazon, WooCommerce or Magento store. Additional channels available at jQuery50 per channel per month</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Additional 300 orders at jQuery99 per month</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            LOW
+    
+                            <span class="plan-comparison__feature-tooltip">Easily integrate with Xero or QuickBooks Online</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Fast and secure credit card payments for wholesale invoices</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Sell wholesale online with a B2B store customizable to each customer</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Create and edit orders on iPhone and iPad</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            Unlimited
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            Unlimited
+    
+                            <span class="plan-comparison__feature-tooltip">Manage stock across multiple locations</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Get in touch with our awesome support team 24 hours a day, 7 days a week</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Fine-grained control of staff access to data and features</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-check"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Automate repetitive and time-consuming workflows</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            Advanced
+    
+                            <span class="plan-comparison__feature-tooltip">Create bills of materials and production orders</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-check"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-check"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Integrate with Fulfillment by Amazon.</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Add a Unique URL, Promotional Banners and Featured Products to your B2B store</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-check"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-check"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Bin locations, pick lists. Everything you need to manage your growing warehouse</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Our system helps you work out how many units you’re likely to sell, and when you should restock</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Personalize branding across your customers</span>
+    
+                        </div>
+    
+                    </li>
+    
+                    <li class="plan-comparison__plan plan-comparison__plan--custom pro">
+                        <h6 class="plan-comparison__plan-title">KAS Pro</h6>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Additional users available at jQuery50 per user per month.</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Connect your Shopify, Shopify Plus, Amazon, WooCommerce or Magento store</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-check"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            LOW
+    
+                            <span class="plan-comparison__feature-tooltip">Easily integrate with Xero or QuickBooks Online</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Fast and secure credit card payments for wholesale invoices</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Sell wholesale online with a B2B store customizable to each customer</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Create and edit orders on iPhone and iPad</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            Unlimited
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            Unlimited
+    
+                            <span class="plan-comparison__feature-tooltip">Manage stock across multiple locations</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Get in touch with our awesome support team 24 hours a day, 7 days a week</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-times plan-comparison__boolean--false"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Fine-grained control of staff access to data and features</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-check"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Automate repetitive and time-consuming workflows</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            Advanced
+    
+                            <span class="plan-comparison__feature-tooltip">Create bills of materials and production orders</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-check"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-check"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Integrate with Fulfillment by Amazon.</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Add a Unique URL, Promotional Banners and Featured Products to your B2B store</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-check"></i>
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-check"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Bin locations, pick lists. Everything you need to manage your growing warehouse</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Our system helps you work out how many units you’re likely to sell, and when you should restock</span>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value">
+    
+                            <i class="fa fa-check"></i>
+    
+                        </div>
+    
+                        <div class="plan-comparison__feature-value plan-comparison__feature-value--has-tooltip">
+    
+                            <i class="fa fa-check"></i>
+    
+                            <span class="plan-comparison__feature-tooltip">Personalize branding across your customers</span>
+    
+                        </div>
+    
+                    </li>
+    
+                    </ul>
+                </div>
+    
+                <div class="plan-comparison__row-highlight" style="transform: translateY(calc(1000% + 10px));"></div>
+            </div>
+    
+        </div>
+        <div class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text">
+            <p class="denotation denotation-right"><em>* LoW </em>=<em>Life of Warranty</em>
+    
+            </p>
+        </div>
+    
+        </span>
+        </div>
+        <!--end widget-span -->
+        </div>
+        <!--end row-->
+        </div>
+        <!--end row-wrapper -->
+    
+        <div class="row-fluid-wrapper row-depth-1 row-number-3  background-color--sign theme--dark">
+            <div class="row-fluid ">
+                <div class="span12 widget-span widget-type-widget_container wrapper--center-focus styled-text-content wrapper--no-min" style="" data-widget-type="widget_container" data-x="0" data-w="12">
+                    <span class="" style="" data-hs-cos-general-type="widget_container" data-hs-cos-type="widget_container"><div class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="custom_widget"><div class="module--spacer-md"></div></div>
+                        <div class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="custom_widget">
+                        <div data-background-style="background-color--sign theme--dark"></div>
+                        </div>
+                        <div class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><h2 style="text-align: center;">You're <strong>5 seconds away</strong> to get started. Get a demo?</h2></div>
+                        <div class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="custom_widget">
+    
+                        <div class="signup-modal-wrapper">
+    
+                              <div class="signup-modal-cta-wrapper signup-modal-cta-wrapper--bumper">
+                                    <a href="">
+                                        <h6 class="" style="border-width:0px;margin-top:0px;font-size:20px;" alt="Get Started">
+                                                Get Started
+                                                </h6>
+                                    </a>
+                            </div>
+    
+                        </div>
+    
+                        </div>
+                          <div class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="custom_widget"><div class="module--spacer-sm"></div></div></span>
+                </div>
+                <!--end widget-span -->
+            </div>
+            <!--end row-->
+        </div>
+        <!--end row-wrapper -->
+    
+        <div class="row-fluid-wrapper row-depth-1 row-number-5  background-color--gray-1-new">
+            <div class="row-fluid ">
+                <div class="span12 widget-span widget-type-widget_container wrapper--center-focus styled-text-content wrapper--no-min" style="" data-widget-type="widget_container" data-x="0" data-w="12">
+                    <span class="" style="" data-hs-cos-general-type="widget_container" data-hs-cos-type="widget_container"><div class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="custom_widget">
+                        <div data-background-style="background-color--gray-1-new"></div>
+                        </div>
+                        <div class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><h3 style="text-align: center;">How can we help you?</h3></div>
+                        <div class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="custom_widget"><div class="module--product-demo">
+    
+                                <div class="product-demo__buttons wrapper--center-focus">
+                                    <div class="button-input--secondary button-input--hollow">
+                                        <button class="cta_button" href="#feedback" rel="leanModal">Ask us anything</button>
+                                    </div>
+                                    <span class="button-input--secondary button-input--cta">
+                                      <a class="cta_button" href="">
+                                        Book a demo with an expert
+                                      </a>
+                                    </span>
+    
+                </div>
+    
+                <div class="product-demo__banner-image-wrapper">
+                    <img class="product-demo__banner-image" src="http://whatismean.com/team.jpg" alt="Book an online  demo with our inventory experts" role="presentation">
+                </div>
+            </div>
+        </div>
+        </span>
+        </div>
+        <!--end widget-span -->
+        </div>
+        <!--end row-->
+        </div>
+        <!--end row-wrapper -->
+    
+        <div class="row-fluid-wrapper row-depth-1 row-number-6  background-color--sign theme--dark">
+            <div class="row-fluid ">
+                <div class="span12 widget-span widget-type-widget_container wrapper--center-focus styled-text-content wrapper--no-min" style="" data-widget-type="widget_container" data-x="0" data-w="12">
+                    <span class="" style="" data-hs-cos-general-type="widget_container" data-hs-cos-type="widget_container"><div class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="custom_widget">
+                        <div data-background-style="background-color--sign theme--dark"></div>
+                        </div>
+                        <div class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="custom_widget"><div class="module--spacer-md"></div></div>
+                        <div class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="rich_text"><h2 style="text-align: center;">Try KAS <strong>completely free for 30 days</strong></h2></div>
+                        <div class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="custom_widget">
+    
+                        <div class="signup-modal-wrapper">
+    
+                              <div class="signup-modal-cta-wrapper signup-modal-cta-wrapper--bumper">
+                                    <a href="">
+                                        <h6 class="" style="border-width:0px;margin-top:0px;font-size:20px;" alt="Get Started">
+                                                Get Started
+                                                </h6>
+                                    </a>
+                              </div>
+    
+                        </div>
+    
+                        </div>
+                        <div class="" style="" data-hs-cos-general-type="widget" data-hs-cos-type="custom_widget"><div class="module--spacer-md"></div></div></span>
+                </div>
+                <!--end widget-span -->
+            </div>
+            <!--end row-->
+        </div>
+    
+        </div>
+        
+        </div>
+    </div>
